@@ -1,6 +1,6 @@
 ﻿namespace MaterialsDB
 {
-    partial class FormMaterials
+    partial class FormSuppliers
     {
         /// <summary>
         ///  Required designer variable.
@@ -59,6 +59,7 @@
             buttonAdd.FlatAppearance.CheckedBackColor = Color.Black;
             buttonAdd.FlatAppearance.MouseDownBackColor = Color.Black;
             buttonAdd.FlatAppearance.MouseOverBackColor = Color.Black;
+            buttonAdd.FlatStyle = FlatStyle.Flat;
             buttonAdd.Location = new Point(0, 0);
             buttonAdd.Margin = new Padding(0);
             buttonAdd.Name = "buttonAdd";
@@ -74,6 +75,7 @@
             buttonUpdate.FlatAppearance.CheckedBackColor = Color.Black;
             buttonUpdate.FlatAppearance.MouseDownBackColor = Color.Black;
             buttonUpdate.FlatAppearance.MouseOverBackColor = Color.Black;
+            buttonUpdate.FlatStyle = FlatStyle.Flat;
             buttonUpdate.Location = new Point(175, 0);
             buttonUpdate.Margin = new Padding(0);
             buttonUpdate.Name = "buttonUpdate";
@@ -89,6 +91,7 @@
             buttonDelete.FlatAppearance.CheckedBackColor = Color.Black;
             buttonDelete.FlatAppearance.MouseDownBackColor = Color.Black;
             buttonDelete.FlatAppearance.MouseOverBackColor = Color.Black;
+            buttonDelete.FlatStyle = FlatStyle.Flat;
             buttonDelete.Location = new Point(439, 0);
             buttonDelete.Margin = new Padding(0);
             buttonDelete.Name = "buttonDelete";
@@ -104,6 +107,7 @@
             buttonHistory.FlatAppearance.CheckedBackColor = Color.Black;
             buttonHistory.FlatAppearance.MouseDownBackColor = Color.Black;
             buttonHistory.FlatAppearance.MouseOverBackColor = Color.Black;
+            buttonHistory.FlatStyle = FlatStyle.Flat;
             buttonHistory.Location = new Point(614, 0);
             buttonHistory.Margin = new Padding(0);
             buttonHistory.Name = "buttonHistory";
@@ -127,11 +131,14 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(984, 484);
             dataGridView1.TabIndex = 0;
             // 
-            // FormMaterials
+            // FormSuppliers
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -141,9 +148,9 @@
             Controls.Add(flowLayoutPanel1);
             Font = new Font("Segoe UI", 14F);
             Margin = new Padding(5);
-            Name = "FormMaterials";
+            Name = "FormSuppliers";
             Padding = new Padding(10);
-            Text = "Материалы";
+            Text = "Поставщики";
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

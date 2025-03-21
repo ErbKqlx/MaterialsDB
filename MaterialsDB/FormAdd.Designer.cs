@@ -37,9 +37,9 @@
             BackColor = Color.White;
             ClientSize = new Size(631, 454);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "FormAdd";
-            Text = "Добавление материала";
+            Text = "Добавление поставщика";
             ResumeLayout(false);
         }
 
