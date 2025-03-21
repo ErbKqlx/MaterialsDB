@@ -1,8 +1,8 @@
 namespace MaterialsDB
 {
-    public partial class Form1 : Form
+    public partial class FormMaterials : Form
     {
-        public Form1()
+        public FormMaterials()
         {
             InitializeComponent();
         }
