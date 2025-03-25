@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             flowLayoutPanel1 = new FlowLayoutPanel();
             buttonAdd = new Button();
             buttonUpdate = new Button();
             buttonDelete = new Button();
             buttonHistory = new Button();
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            dataGridViewSuppliers = new DataGridView();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSuppliers).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -57,8 +59,8 @@
             buttonAdd.BackColor = Color.White;
             buttonAdd.FlatAppearance.BorderColor = Color.Black;
             buttonAdd.FlatAppearance.CheckedBackColor = Color.Black;
-            buttonAdd.FlatAppearance.MouseDownBackColor = Color.Black;
-            buttonAdd.FlatAppearance.MouseOverBackColor = Color.Black;
+            buttonAdd.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonAdd.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonAdd.FlatStyle = FlatStyle.Flat;
             buttonAdd.Location = new Point(0, 0);
             buttonAdd.Margin = new Padding(0);
@@ -73,8 +75,8 @@
             buttonUpdate.BackColor = Color.White;
             buttonUpdate.FlatAppearance.BorderColor = Color.Black;
             buttonUpdate.FlatAppearance.CheckedBackColor = Color.Black;
-            buttonUpdate.FlatAppearance.MouseDownBackColor = Color.Black;
-            buttonUpdate.FlatAppearance.MouseOverBackColor = Color.Black;
+            buttonUpdate.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonUpdate.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonUpdate.FlatStyle = FlatStyle.Flat;
             buttonUpdate.Location = new Point(175, 0);
             buttonUpdate.Margin = new Padding(0);
@@ -89,8 +91,8 @@
             buttonDelete.BackColor = Color.White;
             buttonDelete.FlatAppearance.BorderColor = Color.Black;
             buttonDelete.FlatAppearance.CheckedBackColor = Color.Black;
-            buttonDelete.FlatAppearance.MouseDownBackColor = Color.Black;
-            buttonDelete.FlatAppearance.MouseOverBackColor = Color.Black;
+            buttonDelete.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonDelete.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonDelete.FlatStyle = FlatStyle.Flat;
             buttonDelete.Location = new Point(439, 0);
             buttonDelete.Margin = new Padding(0);
@@ -105,8 +107,8 @@
             buttonHistory.BackColor = Color.White;
             buttonHistory.FlatAppearance.BorderColor = Color.Black;
             buttonHistory.FlatAppearance.CheckedBackColor = Color.Black;
-            buttonHistory.FlatAppearance.MouseDownBackColor = Color.Black;
-            buttonHistory.FlatAppearance.MouseOverBackColor = Color.Black;
+            buttonHistory.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            buttonHistory.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonHistory.FlatStyle = FlatStyle.Flat;
             buttonHistory.Location = new Point(614, 0);
             buttonHistory.Margin = new Padding(0);
@@ -118,25 +120,43 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(dataGridViewSuppliers);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(10, 82);
             panel1.Name = "panel1";
             panel1.Size = new Size(984, 484);
             panel1.TabIndex = 1;
             // 
-            // dataGridView1
+            // dataGridViewSuppliers
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(984, 484);
-            dataGridView1.TabIndex = 0;
+            dataGridViewSuppliers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewSuppliers.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new Padding(10, 5, 10, 5);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridViewSuppliers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(103, 186, 128);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewSuppliers.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewSuppliers.Dock = DockStyle.Fill;
+            dataGridViewSuppliers.Location = new Point(0, 0);
+            dataGridViewSuppliers.MultiSelect = false;
+            dataGridViewSuppliers.Name = "dataGridViewSuppliers";
+            dataGridViewSuppliers.ReadOnly = true;
+            dataGridViewSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewSuppliers.Size = new Size(984, 484);
+            dataGridViewSuppliers.TabIndex = 0;
             // 
             // FormSuppliers
             // 
@@ -153,7 +173,7 @@
             Text = "Поставщики";
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSuppliers).EndInit();
             ResumeLayout(false);
         }
 
@@ -165,6 +185,6 @@
         private Button buttonDelete;
         private Button buttonHistory;
         private Panel panel1;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewSuppliers;
     }
 }
