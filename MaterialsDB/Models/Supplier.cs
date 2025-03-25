@@ -11,7 +11,11 @@ public partial class Supplier
 
     public string Inn { get; set; } = null!;
 
-    public bool? Active { get; set; }
+    public bool Active { get; set; }
+
+    public short IdTypeOfSupplier { get; set; }
+
+    public virtual TypesOfSupplier IdTypeOfSupplierNavigation { get; set; } = null!;
 
     public virtual ICollection<SuppliersMaterial> SuppliersMaterials { get; set; } = new List<SuppliersMaterial>();
 }

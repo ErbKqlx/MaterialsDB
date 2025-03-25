@@ -21,8 +21,6 @@ public partial class PartnersContext : DbContext
 
     public virtual DbSet<PartnersProduct> PartnersProducts { get; set; }
 
-    public virtual DbSet<PriceHistory> PriceHistories { get; set; }
-
     public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<ProductsMaterial> ProductsMaterials { get; set; }
@@ -31,9 +29,13 @@ public partial class PartnersContext : DbContext
 
     public virtual DbSet<SuppliersMaterial> SuppliersMaterials { get; set; }
 
+    public virtual DbSet<TypesOfMaterial> TypesOfMaterials { get; set; }
+
     public virtual DbSet<TypesOfPartner> TypesOfPartners { get; set; }
 
     public virtual DbSet<TypesOfProduct> TypesOfProducts { get; set; }
+
+    public virtual DbSet<TypesOfSupplier> TypesOfSuppliers { get; set; }
 
     public virtual DbSet<UnitsOfMeasurement> UnitsOfMeasurements { get; set; }
 
@@ -50,14 +52,14 @@ public partial class PartnersContext : DbContext
             entity.ToTable("materials");
 
             entity.Property(e => e.Id).HasDefaultValueSql("nextval('\"Materials_id_seq\"'::regclass)");
-            entity.Property(e => e.IdUnit).HasColumnName("Id_Unit");
+            entity.Property(e => e.IdTypeOfMaterial).HasColumnName("Id_TypeOfMaterial");
             entity.Property(e => e.Image).HasMaxLength(255);
             entity.Property(e => e.Name).HasMaxLength(255);
 
-            entity.HasOne(d => d.IdUnitNavigation).WithMany(p => p.Materials)
-                .HasForeignKey(d => d.IdUnit)
+            entity.HasOne(d => d.IdTypeOfMaterialNavigation).WithMany(p => p.Materials)
+                .HasForeignKey(d => d.IdTypeOfMaterial)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("materials_Id_Unit_fkey");
+                .HasConstraintName("materials_Id_TypeOfMaterial_fkey");
         });
 
         modelBuilder.Entity<Partner>(entity =>
@@ -93,21 +95,6 @@ public partial class PartnersContext : DbContext
                 .HasForeignKey(d => d.IdProduct)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Partners_Products_IdProduct_fkey");
-        });
-
-        modelBuilder.Entity<PriceHistory>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("price_history_pkey");
-
-            entity.ToTable("price_history");
-
-            entity.Property(e => e.IdMaterial).HasColumnName("Id_Material");
-            entity.Property(e => e.Price).HasColumnType("money");
-
-            entity.HasOne(d => d.IdMaterialNavigation).WithMany(p => p.PriceHistories)
-                .HasForeignKey(d => d.IdMaterial)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("price_history_Id_Material_fkey");
         });
 
         modelBuilder.Entity<Product>(entity =>
@@ -148,8 +135,15 @@ public partial class PartnersContext : DbContext
 
             entity.ToTable("suppliers");
 
+            entity.Property(e => e.Active).HasDefaultValue(false);
+            entity.Property(e => e.IdTypeOfSupplier).HasColumnName("Id_TypeOfSupplier");
             entity.Property(e => e.Inn).HasMaxLength(12);
             entity.Property(e => e.Name).HasMaxLength(255);
+
+            entity.HasOne(d => d.IdTypeOfSupplierNavigation).WithMany(p => p.Suppliers)
+                .HasForeignKey(d => d.IdTypeOfSupplier)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("suppliers_Id_TypeOfSupplier_fkey");
         });
 
         modelBuilder.Entity<SuppliersMaterial>(entity =>
@@ -160,6 +154,8 @@ public partial class PartnersContext : DbContext
 
             entity.Property(e => e.IdMaterial).HasColumnName("Id_Material");
             entity.Property(e => e.IdSupplier).HasColumnName("Id_Supplier");
+            entity.Property(e => e.IdUnit).HasColumnName("Id_Unit");
+            entity.Property(e => e.Price).HasColumnType("money");
 
             entity.HasOne(d => d.IdMaterialNavigation).WithMany(p => p.SuppliersMaterials)
                 .HasForeignKey(d => d.IdMaterial)
@@ -170,6 +166,20 @@ public partial class PartnersContext : DbContext
                 .HasForeignKey(d => d.IdSupplier)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("suppliers_materials_Id_Supplier_fkey");
+
+            entity.HasOne(d => d.IdUnitNavigation).WithMany(p => p.SuppliersMaterials)
+                .HasForeignKey(d => d.IdUnit)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("suppliers_materials_Id_Unit_fkey");
+        });
+
+        modelBuilder.Entity<TypesOfMaterial>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("types_of_materials_pkey");
+
+            entity.ToTable("types_of_materials");
+
+            entity.Property(e => e.Name).HasMaxLength(255);
         });
 
         modelBuilder.Entity<TypesOfPartner>(entity =>
@@ -186,6 +196,15 @@ public partial class PartnersContext : DbContext
             entity.HasKey(e => e.Id).HasName("TypesOfProducts_pkey");
 
             entity.Property(e => e.Id).HasIdentityOptions(null, null, 6L, null, null, null);
+        });
+
+        modelBuilder.Entity<TypesOfSupplier>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("types_of_suppliers_pkey");
+
+            entity.ToTable("types_of_suppliers");
+
+            entity.Property(e => e.TypeName).HasMaxLength(255);
         });
 
         modelBuilder.Entity<UnitsOfMeasurement>(entity =>

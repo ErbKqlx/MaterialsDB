@@ -51,7 +51,7 @@
             flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(10, 10);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(984, 72);
+            flowLayoutPanel1.Size = new Size(1012, 72);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // buttonAdd
@@ -69,6 +69,7 @@
             buttonAdd.TabIndex = 0;
             buttonAdd.Text = "Добавить";
             buttonAdd.UseVisualStyleBackColor = false;
+            buttonAdd.Click += ButtonAdd_Click;
             // 
             // buttonUpdate
             // 
@@ -85,6 +86,7 @@
             buttonUpdate.TabIndex = 1;
             buttonUpdate.Text = "Редактировать";
             buttonUpdate.UseVisualStyleBackColor = false;
+            buttonUpdate.Click += ButtonUpdate_Click;
             // 
             // buttonDelete
             // 
@@ -97,7 +99,7 @@
             buttonDelete.Location = new Point(439, 0);
             buttonDelete.Margin = new Padding(0);
             buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(175, 51);
+            buttonDelete.Size = new Size(202, 51);
             buttonDelete.TabIndex = 2;
             buttonDelete.Text = "Удалить";
             buttonDelete.UseVisualStyleBackColor = false;
@@ -110,7 +112,7 @@
             buttonHistory.FlatAppearance.MouseDownBackColor = Color.Transparent;
             buttonHistory.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonHistory.FlatStyle = FlatStyle.Flat;
-            buttonHistory.Location = new Point(614, 0);
+            buttonHistory.Location = new Point(641, 0);
             buttonHistory.Margin = new Padding(0);
             buttonHistory.Name = "buttonHistory";
             buttonHistory.Size = new Size(370, 51);
@@ -124,7 +126,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(10, 82);
             panel1.Name = "panel1";
-            panel1.Size = new Size(984, 484);
+            panel1.Size = new Size(1012, 484);
             panel1.TabIndex = 1;
             // 
             // dataGridViewSuppliers
@@ -155,7 +157,7 @@
             dataGridViewSuppliers.Name = "dataGridViewSuppliers";
             dataGridViewSuppliers.ReadOnly = true;
             dataGridViewSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewSuppliers.Size = new Size(984, 484);
+            dataGridViewSuppliers.Size = new Size(1012, 484);
             dataGridViewSuppliers.TabIndex = 0;
             // 
             // FormSuppliers
@@ -163,7 +165,7 @@
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1004, 576);
+            ClientSize = new Size(1032, 576);
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel1);
             Font = new Font("Segoe UI", 14F);

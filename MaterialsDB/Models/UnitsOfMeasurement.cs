@@ -9,5 +9,5 @@ public partial class UnitsOfMeasurement
 
     public string Unit { get; set; } = null!;
 
-    public virtual ICollection<Material> Materials { get; set; } = new List<Material>();
+    public virtual ICollection<SuppliersMaterial> SuppliersMaterials { get; set; } = new List<SuppliersMaterial>();
 }

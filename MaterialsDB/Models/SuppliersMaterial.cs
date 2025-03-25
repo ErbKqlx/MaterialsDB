@@ -13,9 +13,19 @@ public partial class SuppliersMaterial
 
     public DateOnly DateOfSupply { get; set; }
 
-    public short Amount { get; set; }
+    public short AmountInPackage { get; set; }
+
+    public short PackageAmount { get; set; }
+
+    public decimal Price { get; set; }
+
+    public short IdUnit { get; set; }
+
+    public short Quality { get; set; }
 
     public virtual Material IdMaterialNavigation { get; set; } = null!;
 
     public virtual Supplier IdSupplierNavigation { get; set; } = null!;
+
+    public virtual UnitsOfMeasurement IdUnitNavigation { get; set; } = null!;
 }

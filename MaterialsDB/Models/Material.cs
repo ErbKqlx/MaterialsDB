@@ -9,21 +9,13 @@ public partial class Material
 
     public string Name { get; set; } = null!;
 
-    public int AmountPackage { get; set; }
-
-    public short IdUnit { get; set; }
-
     public string? Description { get; set; }
 
     public string? Image { get; set; }
 
-    public int Amount { get; set; }
+    public short IdTypeOfMaterial { get; set; }
 
-    public int MinAmount { get; set; }
-
-    public virtual UnitsOfMeasurement IdUnitNavigation { get; set; } = null!;
-
-    public virtual ICollection<PriceHistory> PriceHistories { get; set; } = new List<PriceHistory>();
+    public virtual TypesOfMaterial IdTypeOfMaterialNavigation { get; set; } = null!;
 
     public virtual ICollection<ProductsMaterial> ProductsMaterials { get; set; } = new List<ProductsMaterial>();
 

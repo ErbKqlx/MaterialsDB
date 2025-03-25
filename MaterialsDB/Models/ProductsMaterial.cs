@@ -11,8 +11,6 @@ public partial class ProductsMaterial
 
     public int IdMaterial { get; set; }
 
-    public DateOnly DateOfManufacture { get; set; }
-
     public virtual Material IdMaterialNavigation { get; set; } = null!;
 
     public virtual Product IdProductNavigation { get; set; } = null!;

@@ -30,7 +30,6 @@
         {
             panel1 = new Panel();
             label1 = new Label();
-            nameOfSupplier = new Label();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
@@ -40,7 +39,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(nameOfSupplier);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -53,18 +51,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(32, 26);
             label1.Name = "label1";
-            label1.Size = new Size(174, 25);
+            label1.Size = new Size(179, 25);
             label1.TabIndex = 0;
-            label1.Text = "История поставок:";
-            // 
-            // nameOfSupplier
-            // 
-            nameOfSupplier.AutoSize = true;
-            nameOfSupplier.Location = new Point(204, 26);
-            nameOfSupplier.Name = "nameOfSupplier";
-            nameOfSupplier.Size = new Size(253, 25);
-            nameOfSupplier.TabIndex = 1;
-            nameOfSupplier.Text = "Наименование поставщика";
+            label1.Text = "История поставок: ";
             // 
             // panel2
             // 
@@ -94,7 +83,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "FormHistory";
             Text = "История поставок";
             panel1.ResumeLayout(false);
@@ -107,9 +96,8 @@
         #endregion
 
         private Panel panel1;
-        private Label nameOfSupplier;
-        private Label label1;
         private Panel panel2;
         private DataGridView dataGridView1;
+        public Label label1;
     }
 }
