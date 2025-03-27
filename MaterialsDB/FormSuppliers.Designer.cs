@@ -51,7 +51,7 @@
             flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(10, 10);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1012, 72);
+            flowLayoutPanel1.Size = new Size(1069, 72);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // buttonAdd
@@ -65,7 +65,7 @@
             buttonAdd.Location = new Point(0, 0);
             buttonAdd.Margin = new Padding(0);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(175, 51);
+            buttonAdd.Size = new Size(217, 51);
             buttonAdd.TabIndex = 0;
             buttonAdd.Text = "Добавить";
             buttonAdd.UseVisualStyleBackColor = false;
@@ -79,7 +79,7 @@
             buttonUpdate.FlatAppearance.MouseDownBackColor = Color.Transparent;
             buttonUpdate.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonUpdate.FlatStyle = FlatStyle.Flat;
-            buttonUpdate.Location = new Point(175, 0);
+            buttonUpdate.Location = new Point(217, 0);
             buttonUpdate.Margin = new Padding(0);
             buttonUpdate.Name = "buttonUpdate";
             buttonUpdate.Size = new Size(264, 51);
@@ -96,13 +96,14 @@
             buttonDelete.FlatAppearance.MouseDownBackColor = Color.Transparent;
             buttonDelete.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonDelete.FlatStyle = FlatStyle.Flat;
-            buttonDelete.Location = new Point(439, 0);
+            buttonDelete.Location = new Point(481, 0);
             buttonDelete.Margin = new Padding(0);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(202, 51);
             buttonDelete.TabIndex = 2;
             buttonDelete.Text = "Удалить";
             buttonDelete.UseVisualStyleBackColor = false;
+            buttonDelete.Click += ButtonDelete_Click;
             // 
             // buttonHistory
             // 
@@ -112,13 +113,14 @@
             buttonHistory.FlatAppearance.MouseDownBackColor = Color.Transparent;
             buttonHistory.FlatAppearance.MouseOverBackColor = Color.Transparent;
             buttonHistory.FlatStyle = FlatStyle.Flat;
-            buttonHistory.Location = new Point(641, 0);
+            buttonHistory.Location = new Point(683, 0);
             buttonHistory.Margin = new Padding(0);
             buttonHistory.Name = "buttonHistory";
-            buttonHistory.Size = new Size(370, 51);
+            buttonHistory.Size = new Size(384, 51);
             buttonHistory.TabIndex = 3;
             buttonHistory.Text = "История поставок";
             buttonHistory.UseVisualStyleBackColor = false;
+            buttonHistory.Click += ButtonHistory_Click;
             // 
             // panel1
             // 
@@ -126,7 +128,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(10, 82);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1012, 484);
+            panel1.Size = new Size(1069, 484);
             panel1.TabIndex = 1;
             // 
             // dataGridViewSuppliers
@@ -157,7 +159,7 @@
             dataGridViewSuppliers.Name = "dataGridViewSuppliers";
             dataGridViewSuppliers.ReadOnly = true;
             dataGridViewSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewSuppliers.Size = new Size(1012, 484);
+            dataGridViewSuppliers.Size = new Size(1069, 484);
             dataGridViewSuppliers.TabIndex = 0;
             // 
             // FormSuppliers
@@ -165,7 +167,7 @@
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1032, 576);
+            ClientSize = new Size(1089, 576);
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel1);
             Font = new Font("Segoe UI", 14F);

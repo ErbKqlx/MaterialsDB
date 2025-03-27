@@ -1,6 +1,7 @@
 using MaterialsDB.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
+using static System.Windows.Forms.DataFormats;
 
 namespace MaterialsDB
 {
@@ -27,9 +28,10 @@ namespace MaterialsDB
             dataGridViewSuppliers.Columns["Name"].HeaderText = "Наименование";
             dataGridViewSuppliers.Columns["Inn"].HeaderText = "ИНН";
             dataGridViewSuppliers.Columns["Active"].HeaderText = "Действующий";
+            dataGridViewSuppliers.Columns["AvgQuality"].HeaderText = "Среднее качество поставок";
+
             dataGridViewSuppliers.Columns["Active"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewSuppliers.Columns.Add("avgQuality", "Среднее качество поставок");
-            dataGridViewSuppliers.Columns["avgQuality"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSuppliers.Columns["AvgQuality"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -45,6 +47,9 @@ namespace MaterialsDB
 
             DialogResult result = formAdd.ShowDialog(this);
             if (result == DialogResult.Cancel)
+                return;
+
+            if (IsEmpty(formAdd))
                 return;
 
             //var supplier = new Supplier();
@@ -89,28 +94,94 @@ namespace MaterialsDB
             if (result == DialogResult.Cancel)
                 return;
 
+            if (IsEmpty(formAdd))
+                return;
+
             var type = (TypesOfSupplier)formAdd.typesOfSupplier.SelectedItem;
-            supplier = new Supplier
-            {
-                IdTypeOfSupplier = type.Id,
-                Name = formAdd.name.Text,
-                Inn = formAdd.inn.Text,
-                Active = formAdd.active.Checked
-            };
+            supplier.IdTypeOfSupplier = type.Id;
+            supplier.Name = formAdd.name.Text;
+            supplier.Inn = formAdd.inn.Text;
+            supplier.Active = formAdd.active.Checked;
 
             db.Suppliers.Update(supplier);
             db.SaveChanges();
+
+            MessageBox.Show(
+                "Поставщик обновлен",
+                "Успех",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+
+            UpdateData();
+        }
+
+        private void ButtonDelete_Click(object sender, EventArgs e)
+        {
+            var id = dataGridViewSuppliers.SelectedRows[0].Cells["Id"].Value;
+            var converted = Int32.TryParse(id.ToString(), out int idSupplier);
+            if (!converted)
+                return;
+
+            var supplier = db.Suppliers.Find(idSupplier);
+
+            db.Suppliers.Remove(supplier);
+            db.SaveChanges();
+
+            MessageBox.Show
+            (
+                "Поставщик удален",
+                "Успех",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
 
             UpdateData();
         }
 
         private void UpdateData()
         {
+
             dataGridViewSuppliers.DataSource = db.Suppliers
                 .Include(u => u.IdTypeOfSupplierNavigation)
-                .Select(u => new { u.Id, u.IdTypeOfSupplierNavigation.TypeName, u.Name, u.Inn, u.Active })
-                .OrderBy(s => s.Active == true)
+                .Select(u => new
+                {
+                    u.Id,
+                    u.IdTypeOfSupplierNavigation.TypeName,
+                    u.Name,
+                    u.Inn,
+                    u.Active,
+                    AvgQuality = (float)u.SuppliersMaterials.Sum(u => u.Quality) / u.SuppliersMaterials.Count()
+                })
+                .OrderByDescending(s => s.Id)
                 .ToList();
+        }
+
+        private bool IsEmpty(FormAdd formAdd)
+        {
+            if (formAdd.name.Text == "" || formAdd.inn.Text == "")
+            {
+                MessageBox.Show
+                (
+                    "Есть пустое поле",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return true;
+            }
+            return false;
+        }
+
+        private void ButtonHistory_Click(object sender, EventArgs e)
+        {
+            var id = dataGridViewSuppliers.SelectedRows[0].Cells["Id"].Value;
+            var converted = Int32.TryParse(id.ToString(), out int idSupplier);
+            if (!converted)
+                return;
+
+            FormHistory formHistory = new(idSupplier);
+            formHistory.Show();
         }
     }
 }
