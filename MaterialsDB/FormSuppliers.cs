@@ -141,6 +141,7 @@ namespace MaterialsDB
 
         private void UpdateData()
         {
+            //var selected = db.Suppliers.Select(u => (float)u.SuppliersMaterials.Sum(u => u.Quality) / u.SuppliersMaterials.Count());
 
             dataGridViewSuppliers.DataSource = db.Suppliers
                 .Include(u => u.IdTypeOfSupplierNavigation)
@@ -151,10 +152,28 @@ namespace MaterialsDB
                     u.Name,
                     u.Inn,
                     u.Active,
-                    AvgQuality = (float)u.SuppliersMaterials.Sum(u => u.Quality) / u.SuppliersMaterials.Count()
+                    AvgQuality = u.SuppliersMaterials.Count() != 0 ? (float)u.SuppliersMaterials.Sum(u => u.Quality) / u.SuppliersMaterials.Count() : 0
+                        
                 })
                 .OrderByDescending(s => s.Id)
                 .ToList();
+
+            //catch
+            //{
+            //    dataGridViewSuppliers.DataSource = db.Suppliers
+            //        .Include(u => u.IdTypeOfSupplierNavigation)
+            //        .Select(u => new
+            //        {
+            //            u.Id,
+            //            u.IdTypeOfSupplierNavigation.TypeName,
+            //            u.Name,
+            //            u.Inn,
+            //            u.Active,
+            //            AvgQuality = 0
+            //        })
+            //        .OrderByDescending(s => s.Id)
+            //        .ToList();
+            //}
         }
 
         private bool IsEmpty(FormAdd formAdd)
